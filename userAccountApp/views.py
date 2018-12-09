@@ -9,7 +9,15 @@ def index(request):
 
 def register(request):
     res_dict = {}
-    return render(request,'useraccount/index.html',context=res_dict)
+
+    if request.method == "GET":
+        return render(request,'useraccount/index.html',context=res_dict)
+
+    if request.method == "POST":
+        post_content = request.POST
+        print(post_content)
+        return render(request,'useraccount/index.html',context=res_dict)
+
 
 def edit(request):
     res_dict={}

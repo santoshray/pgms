@@ -30,10 +30,10 @@ class UserAccountRecord(models.Model):
     middle_name = models.CharField(max_length=254,default="nothing",null=True)
     email = models.EmailField(max_length=254,null=True)
     phone = models.CharField(max_length=20,default="99999999",null=True)
-    permanentAddress = models.ForeignKey(AddressRecord,related_name="permanentAddress",null=True)
-    mailingAddress = models.ForeignKey(AddressRecord,related_name="mailingAddress",null=True)
+    permanentAddress = models.ForeignKey(AddressRecord,related_name="permanentAddress",null=True,on_delete=models.CASCADE)
+    mailingAddress = models.ForeignKey(AddressRecord,related_name="mailingAddress",null=True,on_delete=models.CASCADE)
     profilePhoto = models.FileField(upload_to='profile_pics/', default='profile_pics/None/no-img.jpg' )
-    idType = models.ForeignKey(IdentityTypeRecord ,related_name="identityType",null=True)
+    idType = models.ForeignKey(IdentityTypeRecord ,related_name="identityType",null=True,on_delete=models.CASCADE)
     idDocs = models.FileField(upload_to='profile_data/', default='profile_data/None/file' )
 
 

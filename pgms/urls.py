@@ -22,8 +22,8 @@ from pgms import  views
 
 urlpatterns = [
     url(r'^$',views.index,name="index"),
-    url(r'^useraccount/',include("userAccountApp.urls",namespace="userAccountApp")),
-    url(r'^pgaccount/',include("pgAccountApp.urls",namespace="pgAccountApp")),
+    url(r'^useraccount/',include(("userAccountApp.urls",'userAccountApp'),namespace="userAccountApp")),
+    url(r'^pgaccount/',include(("pgAccountApp.urls",'pgAccountApp'),namespace="pgAccountApp")),
     url(r'^admin/', admin.site.urls),
 
 ]

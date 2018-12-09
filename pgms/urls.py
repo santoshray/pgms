@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf.urls import include
+from pgAccountApp import views
+from userAccountApp import views
+from pgms import  views
 
 urlpatterns = [
+    url(r'^$',views.index,name="index"),
+    url(r'^useraccount/',include("userAccountApp.urls",namespace="userAccountApp")),
+    url(r'^pgaccount/',include("pgAccountApp.urls",namespace="pgAccountApp")),
     url(r'^admin/', admin.site.urls),
+
 ]

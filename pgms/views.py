@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 def index(request):
     res_dict = {}
-    return render(request,'pgaccount/index.html',context=res_dict)
+    return render(request,'index.html',context=res_dict)

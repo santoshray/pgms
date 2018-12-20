@@ -5,8 +5,8 @@ let navItemEmergencyContact = document.querySelector('.nav__item__emergencyConta
 
 navItemProfile.addEventListener('click', showProfile);
 navItemIdVerification.addEventListener('click', showIdVerification);
-navItemProfile.addEventListener('click', showCompanyInfo);
-navItemProfile.addEventListener('click', showEmergencyContact);
+navItemCompanyInfo.addEventListener('click', showCompanyInfo);
+navItemEmergencyContact.addEventListener('click', showEmergencyContact);
 let pgManagementProfile = document.querySelector('.pg-management-profile');
 let pgManagementProfileStatus = pgManagementProfile.style.display;
 let pgManagementIdVerification = document.querySelector('.pg-management-idVerification');
@@ -17,6 +17,7 @@ let pgManagementEmergencyContact = document.querySelector('.pg-management-emerge
 let pgManagementEmergencyContactStatus = pgManagementEmergencyContact.style.display;
 let displayLink = "";
 
+hideall();
 function hideall(){
   pgManagementProfile.style.display = "none";
   pgManagementIdVerification.style.display = "none";
@@ -24,6 +25,7 @@ function hideall(){
   pgManagementEmergencyContact.style.display = "none";
 
 }
+/*
 function checkDisplayEachLink(){
   if(pgManagementProfile.style.display == "block"){
 //    displayLink = pgManagementProfile.style.display;
@@ -42,22 +44,32 @@ function checkDisplayEachLink(){
     pgManagementEmergencyContact.style.display = "none";
   }
 }
+*/
+
 function showProfile(){
+ console.log("showProfile called");
   hideall();
   pgManagementProfile.style.display="block";
 }
 function showIdVerification(){
 // checkDisplayEachLink();
+console.log("showIdVerification called");
+
   hideall();
   pgManagementIdVerification.style.display="block";
+//  pgManagementIdVerification.style.display = "none";
+
 }
 function showCompanyInfo(){
 //  checkDisplayEachLink();
+  console.log("showCompanyInfo called");
   hideall();
   pgManagementCompanyInfo.style.display="block";
 }
 function showEmergencyContact(){
 //  checkDisplayEachLink();
+  console.log("showEmergencyContact called");
+
   hideall();
   pgManagementEmergencyContact.style.display="block";
 }

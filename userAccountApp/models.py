@@ -15,6 +15,7 @@ class AddressRecord(models.Model):
     addrLine1 = models.CharField(max_length=200,default="nothing",null=True)
     addrLine2 = models.CharField(max_length=200,default="nothing",null=True)
     pincode = models.CharField(max_length=10,default="nothing",null=True)
+    city = models.CharField(max_length=100,default="nothing",null=True)
     state = models.CharField(max_length=100,default="nothing",null=True)
     country = models.CharField(max_length=100,default="nothing",null=True)
 
@@ -27,7 +28,11 @@ class PersonalInfoRecord(models.Model):
     last_name  = models.CharField(max_length=254,default="nothing",null=True)
     middle_name = models.CharField(max_length=254,default="nothing",null=True)
     email = models.EmailField(max_length=254,null=True)
+    gender = models.CharField(max_length=254,default="nothing",null=True)
     phone = models.CharField(max_length=20,default="99999999",null=True)
+
+    def __str__(self):
+      return  str(self.__dict__)
 
 
 class UserAccountRecord(models.Model):
@@ -35,7 +40,9 @@ class UserAccountRecord(models.Model):
     userInfo = models.ForeignKey(PersonalInfoRecord,related_name="userInfo",null=True,on_delete=models.CASCADE)
     permanentAddress = models.ForeignKey(AddressRecord,related_name="permanentAddress",null=True,on_delete=models.CASCADE)
     mailingAddress = models.ForeignKey(AddressRecord,related_name="mailingAddress",null=True,on_delete=models.CASCADE)
-    profilePhoto = models.FileField(upload_to='profile_pics/', default='profile_pics/None/no-img.jpg' )
+#    profilePhoto = models.FileField(upload_to='profile_pics/', default='profile_pics/None/no-img.jpg' )
+    profilePhotolist = models.TextField(default='[]')
+
 
     def __str__(self):
       return  str(self.__dict__)
@@ -44,7 +51,7 @@ class UserAccountRecord(models.Model):
 class IdVerificationRecord(models.Model):
     id = models.AutoField(primary_key=True)
     idType = models.ForeignKey(IdentityTypeRecord ,related_name="identityType",null=True,on_delete=models.CASCADE)
-    idDocs = models.FileField(upload_to='profile_data/', default='profile_data/None/file' )
+    idDocsURLlist = models.TextField(default='[]')
 
     def __str__(self):
       return  str(self.__dict__)

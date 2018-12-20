@@ -1,0 +1,22 @@
+{
+	'middleName': ['kumar'],
+	'permanentAddressLine2': ['40'],
+	'permanentAddressLine1': ['1320 Calle Sandcliff'],
+	'permanentAddressState': ['CA'],
+	'mailingAddressCountry': ['United States'],
+	'mailingAddressState': ['CA'],
+	'gender': ['male'],
+	'permanentAddressCountry': ['United States'],
+	'firstName': ['Santosh'],
+	'mailingAddressPincode': ['92154'],
+	'csrfmiddlewaretoken': ['RTsqwOA5hus5DOak36iPBytTBvk2wUSf7EaxfJMKg3upgK3IqlVgEdNTiAQd26O7'],
+	'lastName': ['Ray'],
+	'permanentAddressCity': ['San Diego'],
+	'permanentAddressPincode': ['92154'],
+	'mailingAddressLine1': ['1320 Calle Sandcliff'],
+	'phone': ['8582609957'],
+	'profilePhoto': ['Flickr_-_Rainbirder_-_Golden_Jackal_(1).jpg'],
+	'mailingAddressLine2': ['40'],
+	'mailingAddressCity': ['San Diego'],
+	'email': ['santosh.ray81@gmail.com']
+}

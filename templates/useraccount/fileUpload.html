@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload File</title>
+  </head>
+  <body>
+   <h1>Upload file</h1>
+   <form  action="/useraccount/upload/" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+     <input type="file" name="profilephoto">
+     <button type="submit" >Upload File</button>
+
+   </form>
+
+  </body>
+</html>

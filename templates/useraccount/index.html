@@ -10,7 +10,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,100" rel="stylesheet">
     <link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=zocial">
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
@@ -187,15 +186,175 @@
       </form>
     </div>
   </div> <!-- End of class pg-management-profile -->
-    <div class="pg-management-idVerification">
-      <h1> pg-management-idVerification</h1>
+  <div class="pg-management-idVerification">
+    <h1>Resident Form</h1>
+    <div class="form-content">
+      <form method="post" action="" class="form-container">
+        <table class="form-table-content">
+          <tr class="row-content">
+            <td class="column-content column-content-first">ID Type</td>
+            <td class="column-content column-content-second">
+              <label for="idType"></label>
+              <input type="text" name="idType" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">ID</td>
+            <td class="column-content column-content-second">
+              <label for="id"></label>
+              <input type="text" name="id" class="input-field" required>
+            </td>
+          </tr>
+        </table>
+        <div class="btn-submit-container">
+          <button type="submit" class="btn-submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <div class="pg-management-companyInfo">
-      <h1>pg-management-companyInfo </h1>
+  </div>
+  <div class="pg-management-companyInfo">
+    <h1>Resident Form</h1>
+    <div class="form-content">
+      <form method="post" action="" class="form-container">
+        <table class="form-table-content">
+          <tr class="row-content">
+            <td class="column-content column-content-first">Company Name</td>
+            <td class="column-content column-content-second">
+              <label for="companyName"></label>
+              <input type="text" name="companyName" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <tr>
+              <td class="column-content column-content-first">Company Address</td>
+            </tr>
+            <td class="column-content column-content-first-nextLine">Line 1</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="companyAddressLine1"></label>
+              <input type="text" name="companyAddressLine1" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Line 2</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="mailingAddressLine2"></label>
+              <input type="text" name="mailingAddressLine2" class="input-field">
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Pincode</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="pincode"></label>
+              <input type="number" name="pincode" class="input-field" maxlength="10" size="10" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">City</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="city"></label>
+              <input type="text" name="city" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">State</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="state"></label>
+              <input type="text" name="state" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Occupation</td>
+            <td class="column-content column-content-second">
+              <label for="occupation"></label>
+              <input type="text" name="occupation" class="input-field" required>
+            </td>
+          </tr>
+        </table>
+        <div class="btn-submit-container">
+          <button type="submit" class="btn-submit">Submit</button>
+        </div>
+      </form>
     </div>
-    <div class="pg-management-emergencyContact">
-      <h1>pg-management-emergencyContact </h1>
+  </div>
+  <div class="pg-management-emergencyContact">
+    <h1>Resident Form</h1>
+    <div class="form-content">
+      <form method="post" action="" class="form-container">
+        <table class="form-table-content">
+          <tr class="row-content">
+            <td class="column-content column-content-first">Contact Name</td>
+            <td class="column-content column-content-second">
+              <label for="contactName"></label>
+              <input type="text" name="contactName" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Email</td>
+            <td class="column-content column-content-second">
+              <label for="email"></label>
+              <input type="text" name="email" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Phone</td>
+            <td class="column-content column-content-second">
+              <label for="phone"></label>
+              <input type="number" name="phone" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <tr>
+              <td class="column-content column-content-first">Address</td>
+            </tr>
+            <td class="column-content column-content-first-nextLine">Line 1</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="addressLine1"></label>
+              <input type="text" name="addressLine1" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Line 2</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="permanentAddressLine2"></label>
+              <input type="text" name="permanentAddressLine2" class="input-field">
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Pincode</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="pincode"></label>
+              <input type="number" name="pincode" class="input-field" maxlength="10" size="10" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">City</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="city"></label>
+              <input type="text" name="city" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">State</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="state"></label>
+              <input type="text" name="state" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Relationship</td>
+            <td class="column-content column-content-second">
+              <label for="relationship"></label>
+              <input type="number" name="relationship" class="input-field" required>
+            </td>
+          </tr>
+        </table>
+        <div class="btn-submit-container">
+          <button type="submit" class="btn-submit">Submit</button>
+        </div>
+      </form>
     </div>
+  </div>
+
   <script type="text/javascript" src="{%static "js/resident-form.js"%}"></script>
 
 

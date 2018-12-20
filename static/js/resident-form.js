@@ -17,6 +17,13 @@ let pgManagementEmergencyContact = document.querySelector('.pg-management-emerge
 let pgManagementEmergencyContactStatus = pgManagementEmergencyContact.style.display;
 let displayLink = "";
 
+function hideall(){
+  pgManagementProfile.style.display = "none";
+  pgManagementIdVerification.style.display = "none";
+  pgManagementCompanyInfo.style.display = "none";
+  pgManagementEmergencyContact.style.display = "none";
+
+}
 function checkDisplayEachLink(){
   if(pgManagementProfile.style.display == "block"){
 //    displayLink = pgManagementProfile.style.display;
@@ -36,18 +43,21 @@ function checkDisplayEachLink(){
   }
 }
 function showProfile(){
-
+  hideall();
   pgManagementProfile.style.display="block";
 }
 function showIdVerification(){
-  checkDisplayEachLink();
+// checkDisplayEachLink();
+  hideall();
   pgManagementIdVerification.style.display="block";
 }
 function showCompanyInfo(){
-  checkDisplayEachLink();
+//  checkDisplayEachLink();
+  hideall();
   pgManagementCompanyInfo.style.display="block";
 }
 function showEmergencyContact(){
-  checkDisplayEachLink();
+//  checkDisplayEachLink();
+  hideall();
   pgManagementEmergencyContact.style.display="block";
 }

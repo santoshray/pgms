@@ -33,8 +33,9 @@
   <div class="pg-management-profile">
     <h1>Resident Form</h1>
     <div class="form-content">
-      <form method="post" action="register/" class="form-container" enctype="multipart/form-data">
+      <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
         {%csrf_token%}
+        <input type="hidden"  name="infotype" value="profile">
         <table class="form-table-content">
           <tr class="row-content">
             <td class="column-content column-content-first">First Name</td>
@@ -186,10 +187,20 @@
       </form>
     </div>
   </div> <!-- End of class pg-management-profile -->
+
+ <!--ID  Verification Form Start-->
   <div class="pg-management-idVerification">
     <h1>Resident Form</h1>
     <div class="form-content">
-      <form method="post" action="" class="form-container">
+      <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
+        {%csrf_token%}
+        <input type="hidden"  name="infotype" value="idverification">
+        {%if payload%}
+          <h4>{{payload.email}}</h4>
+          <h4>{{payload.id}}</h4>
+          <input type="hidden"  name="email" value={{payload.email}}>
+          <input type="hidden"  name="id" value={{payload.id}}>
+        {%endif%}
         <table class="form-table-content">
           <tr class="row-content">
             <td class="column-content column-content-first">ID Type</td>
@@ -202,7 +213,7 @@
             <td class="column-content column-content-first">ID</td>
             <td class="column-content column-content-second">
               <label for="id"></label>
-              <input type="text" name="id" class="input-field" required>
+              <input type="text" name="idDoc" class="input-field" required>
             </td>
           </tr>
         </table>
@@ -212,10 +223,22 @@
       </form>
     </div>
   </div>
+
+  <!--ID  Verification Form End-->
+
+<!-- Company Info form  start-->
   <div class="pg-management-companyInfo">
     <h1>Resident Form</h1>
     <div class="form-content">
-      <form method="post" action="" class="form-container">
+      <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
+        {%csrf_token%}
+        <input type="hidden"  name="infotype" value="company">
+        {%if payload%}
+          <h4>{{payload.email}}</h4>
+          <h4>{{payload.id}}</h4>
+          <input type="hidden"  name="email" value={{payload.email}}>
+          <input type="hidden"  name="id" value={{payload.id}}>
+        {%endif%}
         <table class="form-table-content">
           <tr class="row-content">
             <td class="column-content column-content-first">Company Name</td>
@@ -238,28 +261,35 @@
             <td class="column-content column-content-first-nextLine">Line 2</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="mailingAddressLine2"></label>
-              <input type="text" name="mailingAddressLine2" class="input-field">
+              <input type="text" name="companyAddressLine2" class="input-field">
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">Pincode</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="pincode"></label>
-              <input type="number" name="pincode" class="input-field" maxlength="10" size="10" required>
+              <input type="number" name="companyPincode" class="input-field" maxlength="10" size="10" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">City</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="city"></label>
-              <input type="text" name="city" class="input-field" required>
+              <input type="text" name="companyCity" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">State</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="state" class="input-field" required>
+              <input type="text" name="companyState" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Country</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="state"></label>
+              <input type="text" name="companyCountry" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
@@ -276,77 +306,121 @@
       </form>
     </div>
   </div>
+<!-- Company Info form  End-->
+
+<!-- Emergency Contact Info form  start-->
+
   <div class="pg-management-emergencyContact">
-    <h1>Resident Form</h1>
+    <h1>Resident Form : Emergrncy Contact Information</h1>
     <div class="form-content">
-      <form method="post" action="" class="form-container">
+      <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
+        {%csrf_token%}
+        <input type="hidden"  name="infotype" value="emergency_contact">
+        {%if payload%}
+          <h4>{{payload.email}}</h4>
+          <h4>{{payload.id}}</h4>
+          <input type="hidden"  name="email" value={{payload.email}}>
+          <input type="hidden"  name="id" value={{payload.id}}>
+        {%endif%}
         <table class="form-table-content">
           <tr class="row-content">
-            <td class="column-content column-content-first">Contact Name</td>
+            <td class="column-content column-content-first">First Name</td>
             <td class="column-content column-content-second">
-              <label for="contactName"></label>
-              <input type="text" name="contactName" class="input-field" required>
+              <label for="firstName"></label>
+              <input type="text" name="ec1firstName" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Middle Name</td>
+            <td class="column-content column-content-second">
+              <label for="middleName"></label>
+              <input type="text" name="ec1middleName" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Last Name</td>
+            <td class="column-content column-content-second">
+              <label for="lastName"></label>
+              <input type="text" name="ec1lastName" class="input-field" required>
+            </td>
+          </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">Gender</td>
+            <td class="column-content column-content-second">
+              <label for="gender"></label>
+              <input type="radio" name="ec1gender" value="male" class="input-field" checked> Male<br>
+              <input type="radio" name="ec1gender" value="female" class="input-field"> Female<br>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first">Email</td>
             <td class="column-content column-content-second">
               <label for="email"></label>
-              <input type="text" name="email" class="input-field" required>
+              <input type="text" name="ec1email" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first">Phone</td>
             <td class="column-content column-content-second">
               <label for="phone"></label>
-              <input type="number" name="phone" class="input-field" required>
+              <input type="number" name="ec1phone" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
             <tr>
-              <td class="column-content column-content-first">Address</td>
+              <td class="column-content column-content-first">Communication Address</td>
             </tr>
             <td class="column-content column-content-first-nextLine">Line 1</td>
             <td class="column-content column-content-second column-content-second-nextLine">
-              <label for="addressLine1"></label>
-              <input type="text" name="addressLine1" class="input-field" required>
+              <label for="ec1Line1"></label>
+              <input type="text" name="ec1Line1" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">Line 2</td>
             <td class="column-content column-content-second column-content-second-nextLine">
-              <label for="permanentAddressLine2"></label>
-              <input type="text" name="permanentAddressLine2" class="input-field">
+              <label for="ec1Line2"></label>
+              <input type="text" name="ec1Line2" class="input-field">
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">Pincode</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="pincode"></label>
-              <input type="number" name="pincode" class="input-field" maxlength="10" size="10" required>
+              <input type="number" name="ec1Pincode" class="input-field" maxlength="10" size="10" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">City</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="city"></label>
-              <input type="text" name="city" class="input-field" required>
+              <input type="text" name="ec1City" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">State</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="state" class="input-field" required>
+              <input type="text" name="ec1State" class="input-field" required>
             </td>
           </tr>
           <tr class="row-content">
-            <td class="column-content column-content-first">Relationship</td>
-            <td class="column-content column-content-second">
-              <label for="relationship"></label>
-              <input type="number" name="relationship" class="input-field" required>
+            <td class="column-content column-content-first-nextLine">Country</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="state"></label>
+              <input type="text" name="ec1Country" class="input-field" required>
             </td>
           </tr>
+
+          <tr class="row-content">
+            <td class="column-content column-content-first-nextLine">Relationship</td>
+            <td class="column-content column-content-second column-content-second-nextLine">
+              <label for="relationship"></label>
+              <input type="text" name="ec1Relationship" class="input-field" required>
+            </td>
+          </tr>
+
+
         </table>
         <div class="btn-submit-container">
           <button type="submit" class="btn-submit">Submit</button>
@@ -354,6 +428,8 @@
       </form>
     </div>
   </div>
+
+<!-- Emergency Contact Info form  End-->
 
   <script type="text/javascript" src="{%static "js/resident-form.js"%}"></script>
 

@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^register/$',views.register,name="register"),
     url(r'^edit/$',views.edit,name="edit"),
     url(r'^upload/$',views.upload,name="upload"),
+    url(r'^residentlist/$',views.residentlist,name="residentlist"),
+
 ]

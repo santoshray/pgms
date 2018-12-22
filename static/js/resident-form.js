@@ -20,6 +20,7 @@ function hideall(){
   pgManagementEmergencyContact.style.display = "none";
 
 }
+
 function showProfile(){
   hideall();
   pgManagementProfile.style.display="block";

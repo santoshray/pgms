@@ -31,7 +31,7 @@
   </nav>
 
   <div class="pg-management-profile">
-    <h1>Resident Form</h1>
+    <h3>Resident Form : Profile Information</h3>
     <div class="form-content">
       <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
         {%csrf_token%}
@@ -48,7 +48,7 @@
             <td class="column-content column-content-first">Middle Name</td>
             <td class="column-content column-content-second">
               <label for="middleName"></label>
-              <input type="text" name="middleName" class="input-field" required>
+              <input type="text" name="middleName" class="input-field">
             </td>
           </tr>
           <tr class="row-content">
@@ -62,8 +62,8 @@
             <td class="column-content column-content-first">Gender</td>
             <td class="column-content column-content-second">
               <label for="gender"></label>
-              <input type="radio" name="gender" value="male" class="input-field" checked> Male<br>
-              <input type="radio" name="gender" value="female" class="input-field"> Female<br>
+              <input type="radio" name="gender" value="male" class="radio-select" checked> Male<br>
+              <input type="radio" name="gender" value="female" class="radio-select"> Female<br>
             </td>
           </tr>
           <tr class="row-content">
@@ -87,7 +87,7 @@
             <td class="column-content column-content-first-nextLine">Line 1</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="permanentAddressLine1"></label>
-              <input type="text" name="permanentAddressLine1" class="input-field" required>
+              <input type="text" name="permanentAddressLine1" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
@@ -101,28 +101,28 @@
             <td class="column-content column-content-first-nextLine">Pincode</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="pincode"></label>
-              <input type="number" name="permanentAddressPincode" class="input-field" maxlength="10" size="10" required>
+              <input type="number" name="permanentAddressPincode" class="input-field" maxlength="10" size="10" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">City</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="city"></label>
-              <input type="text" name="permanentAddressCity" class="input-field" required>
+              <input type="text" name="permanentAddressCity" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">State</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="permanentAddressState" class="input-field" required>
+              <input type="text" name="permanentAddressState" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">Country</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="permanentAddressCountry" class="input-field" required>
+              <input type="text" name="permanentAddressCountry" class="input-field" >
             </td>
           </tr>
 
@@ -133,7 +133,7 @@
             <td class="column-content column-content-first-nextLine">Line 1</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="mailingAddressLine1"></label>
-              <input type="text" name="mailingAddressLine1" class="input-field" required>
+              <input type="text" name="mailingAddressLine1" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
@@ -147,28 +147,28 @@
             <td class="column-content column-content-first-nextLine">Pincode</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="pincode"></label>
-              <input type="number" name="mailingAddressPincode" class="input-field" maxlength="10" size="10" required>
+              <input type="number" name="mailingAddressPincode" class="input-field" maxlength="10" size="10" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">City</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="city"></label>
-              <input type="text" name="mailingAddressCity" class="input-field" required>
+              <input type="text" name="mailingAddressCity" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">State</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="mailingAddressState" class="input-field" required>
+              <input type="text" name="mailingAddressState" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
             <td class="column-content column-content-first-nextLine">Country</td>
             <td class="column-content column-content-second column-content-second-nextLine">
               <label for="state"></label>
-              <input type="text" name="mailingAddressCountry" class="input-field" required>
+              <input type="text" name="mailingAddressCountry" class="input-field" >
             </td>
           </tr>
 
@@ -177,7 +177,7 @@
             <td class="column-content column-content-second">
               <label for="profilePhoto"></label>
               <input type="file" name="picture" class="input-field input-field-photo"
-              accept="image/gif, image/jpeg" required>
+              accept="image/gif, image/jpeg" >
             </td>
           </tr>
         </table>
@@ -190,14 +190,12 @@
 
  <!--ID  Verification Form Start-->
   <div class="pg-management-idVerification">
-    <h1>Resident Form</h1>
+    <h3>Resident Form : Identity Verification</h3>
     <div class="form-content">
       <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
         {%csrf_token%}
         <input type="hidden"  name="infotype" value="idverification">
         {%if payload%}
-          <h4>{{payload.email}}</h4>
-          <h4>{{payload.id}}</h4>
           <input type="hidden"  name="email" value={{payload.email}}>
           <input type="hidden"  name="id" value={{payload.id}}>
         {%endif%}
@@ -206,16 +204,25 @@
             <td class="column-content column-content-first">ID Type</td>
             <td class="column-content column-content-second">
               <label for="idType"></label>
-              <input type="text" name="idType" class="input-field" required>
+              <input type="text" name="idType" class="input-field">
             </td>
           </tr>
           <tr class="row-content">
-            <td class="column-content column-content-first">ID</td>
+            <td class="column-content column-content-first">ID unique Number</td>
             <td class="column-content column-content-second">
-              <label for="id"></label>
+              <label for="idDoc"></label>
               <input type="text" name="idDoc" class="input-field" required>
             </td>
           </tr>
+          <tr class="row-content">
+            <td class="column-content column-content-first">ID picture <br> (JPG, PNG, GIF, PDF, and EPS)</td>
+            <td class="column-content column-content-second">
+              <label for="idPicture"></label>
+              <input type="file" name="idPicture" class="input-field input-field-photo"
+              accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" >
+            </td>
+          </tr>
+
         </table>
         <div class="btn-submit-container">
           <button type="submit" class="btn-submit">Submit</button>
@@ -228,7 +235,7 @@
 
 <!-- Company Info form  start-->
   <div class="pg-management-companyInfo">
-    <h1>Resident Form</h1>
+    <h3>Resident Form : Company Information</h3>
     <div class="form-content">
       <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
         {%csrf_token%}
@@ -311,7 +318,7 @@
 <!-- Emergency Contact Info form  start-->
 
   <div class="pg-management-emergencyContact">
-    <h1>Resident Form : Emergrncy Contact Information</h1>
+    <h3>Resident Form : Emergency Contact Information</h3>
     <div class="form-content">
       <form method="post" action="/useraccount/register/" class="form-container" enctype="multipart/form-data">
         {%csrf_token%}
@@ -348,8 +355,8 @@
             <td class="column-content column-content-first">Gender</td>
             <td class="column-content column-content-second">
               <label for="gender"></label>
-              <input type="radio" name="ec1gender" value="male" class="input-field" checked> Male<br>
-              <input type="radio" name="ec1gender" value="female" class="input-field"> Female<br>
+              <input type="radio" name="ec1gender" value="male" class="radio-select" checked> Male<br>
+              <input type="radio" name="ec1gender" value="female" class=" radio-select"> Female<br>
             </td>
           </tr>
           <tr class="row-content">

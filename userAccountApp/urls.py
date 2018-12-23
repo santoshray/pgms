@@ -8,5 +8,5 @@ urlpatterns = [
     url(r'^edit/$',views.edit,name="edit"),
     url(r'^upload/$',views.upload,name="upload"),
     url(r'^residentlist/$',views.residentlist,name="residentlist"),
-
+    url(r'^viewprofile/(?P<profile_id>[0-9]+)/$',views.viewprofile,name="viewprofile"),
 ]

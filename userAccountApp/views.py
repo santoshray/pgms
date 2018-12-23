@@ -18,12 +18,19 @@ from userAccountApp.models import IdentityTypeRecord,AddressRecord,PersonalInfoR
 
 def index(request):
     res_dict = {}
+    res_dict["status"] = "NO_ERROR"
+    res_dict["payload"] = {}
+    res_dict["payload"]["infotype"] = "profile"
+
     return render(request,'useraccount/index.html',context=res_dict)
 
 def register(request):
     res_dict = {}
 
     if request.method == "GET":
+        res_dict["status"] = "NO_ERROR"
+        res_dict["payload"] = {}
+        res_dict["payload"]["infotype"] = "profile"
         return render(request,'useraccount/index.html',context=res_dict)
 
     if request.method == "POST":
@@ -162,6 +169,7 @@ def pgms_add_profile_info(request):
 
     res_dict["status"] = "NO_ERROR"
     res_dict["payload"] = {}
+    res_dict["payload"]["infotype"] = "idverification"
     res_dict["payload"]["id"] = user_record.id
     res_dict["payload"]["email"] = personal_info.email
 
@@ -181,6 +189,7 @@ def pgms_add_idverification_info(request):
             res_dict["status"] = "ERROR"
             res_dict["payload"]={}
             res_dict["payload"]["error_details"]=["user object already present in database"]
+            res_dict["payload"]["infotype"] = "idverification"
             res_dict["payload"]["email"] = post_content['email']
             res_dict["payload"]["id"] = user_record.id
             return res_dict
@@ -188,14 +197,16 @@ def pgms_add_idverification_info(request):
         print("user_record.userInfo::")
         print(user_record.userInfo)
         if user_record:
-            try:
-                idVerification_record = user_record.idVerificationInfo
-            except:
+            idVerification_record = user_record.idVerificationInfo
+            if(idVerification_record == None):
                 idVerification_record = IdVerificationRecord()
 
             idtype_record =IdentityTypeRecord()
             idtype_record.docType = post_content["idType"]
             idtype_record.save()
+            print("idVerification_record =  %s"%idVerification_record)
+            print("idtype_record =  %s"%idtype_record)
+
             idVerification_record.idType = idtype_record
             idVerification_record.save()
             personal_info = user_record.userInfo
@@ -234,6 +245,7 @@ def pgms_add_idverification_info(request):
     res_dict["status"] = "NO_ERROR"
     res_dict["payload"]={}
     res_dict["payload"]["email"] = post_content['email']
+    res_dict["payload"]["infotype"] = "company"
     res_dict["payload"]["id"] = user_record.id
     return res_dict
 
@@ -268,10 +280,12 @@ def pgms_add_company_info(request):
             res_dict["payload"]={}
             res_dict["payload"]["email"] = post_content['email']
             res_dict["payload"]["id"] = user_record.id
+            res_dict["payload"]["infotype"] = "emergency_contact"
         else :
             res_dict["status"] = "ERROR"
             res_dict["status_string"] = ["User not found. Please register"]
             res_dict["payload"]={}
+            res_dict["payload"]["infotype"] = "company"
 
         return res_dict
 
@@ -311,13 +325,15 @@ def pgms_add_emergency_contact_info(request):
             user_record.save()
 
             res_dict["status"] = "NO_ERROR"
-            res_dict["status_string"] = ["Emergency Contact Info saved successfully"]
+            res_dict["status_string"] = ["Emergency Contact Info saved successfully","Registration Complete"]
             res_dict["payload"]={}
             res_dict["payload"]["email"] = post_content['email']
             res_dict["payload"]["id"] = user_record.id
+            res_dict["payload"]["infotype"] = "hideall"
         else :
             res_dict["status"] = "ERROR"
             res_dict["status_string"] = ["User not found. Please register"]
             res_dict["payload"]={}
+            res_dict["payload"]["infotype"] = "hideall"
 
         return res_dict

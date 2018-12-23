@@ -37,3 +37,26 @@ function showEmergencyContact(){
   hideall();
   pgManagementEmergencyContact.style.display="block";
 }
+
+function show(infotype)
+{
+
+  console.log(infotype);
+
+  if(infotype === "profile")
+    showProfile();
+
+  if(infotype === "idverification")
+    showIdVerification();
+
+  if(infotype === "company")
+    showCompanyInfo();
+
+  if(infotype === "emergency_contact")
+    showEmergencyContact();
+
+    if(infotype === "hideall")
+      hideall();
+
+
+}

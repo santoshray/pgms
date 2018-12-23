@@ -341,7 +341,7 @@
             <td class="column-content column-content-first">Middle Name</td>
             <td class="column-content column-content-second">
               <label for="middleName"></label>
-              <input type="text" name="ec1middleName" class="input-field" required>
+              <input type="text" name="ec1middleName" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
@@ -363,7 +363,7 @@
             <td class="column-content column-content-first">Email</td>
             <td class="column-content column-content-second">
               <label for="email"></label>
-              <input type="text" name="ec1email" class="input-field" required>
+              <input type="text" name="ec1email" class="input-field" >
             </td>
           </tr>
           <tr class="row-content">
@@ -426,8 +426,6 @@
               <input type="text" name="ec1Relationship" class="input-field" required>
             </td>
           </tr>
-
-
         </table>
         <div class="btn-submit-container">
           <button type="submit" class="btn-submit">Submit</button>
@@ -439,6 +437,11 @@
 <!-- Emergency Contact Info form  End-->
 
   <script type="text/javascript" src="{%static "js/resident-form.js"%}"></script>
+  <script type="text/javascript">
+  {% if payload.infotype %}
+    show('{{payload.infotype}}');
+  {% endif %}
+  </script>
 
 
 </body>

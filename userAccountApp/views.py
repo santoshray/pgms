@@ -99,7 +99,6 @@ def viewprofile(request,profile_id):
     res_dict={}
 
     user_record  =  UserAccountRecord.objects.get(pk=profile_id)
-    print(user_record)
     if user_record:
         res_dict["status"] = "NO_ERROR"
         res_dict["payload"] = {}
@@ -107,7 +106,6 @@ def viewprofile(request,profile_id):
         profilePhotolist = eval(user_record.profilePhotolist)
         if len(profilePhotolist) > 0 :
             res_dict["payload"]["profilephoto"] = profilePhotolist[0]
-
 
     return render(request,'useraccount/viewprofile.html',context=res_dict)
 

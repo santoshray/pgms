@@ -4,254 +4,219 @@
 
 <div class="container">
   <br>
-  <h4>Resident list</h4>
+  <h4>User Profile </h4>
   <br>
 <!-- Basic info ( name  , email , phone) -->
   {% if status == "NO_ERROR" and payload.user_record and payload.user_record.userInfo %}
-    <div class="row">
-      <h4>Basic information</h4>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-6">
-           <table class="alignleft"  >
-             {% with userinfo=payload.user_record.userInfo %}
-             <tr>
-               <td >Name : </td>
-               <td>
-                 {{userinfo.first_name}} {{userinfo.middle_name}} {{userinfo.last_name}}</td>
-             </tr>
-             <tr>
-               <td >Email : </td>
-               <td>{{userinfo.email}} </td>
-             </tr>
-             <tr>
-               <td >Phone : </td>
-               <td>{{userinfo.phone}} </td>
-             </tr>
-             <tr >
-               <td>Gender    : </td>
-               <td>{{userinfo.gender}} </td>
-             </tr>
-             <tr>
-               <td >Occupation : </td>
-               <td>{{payload.user_record.occupation}} </td>
-             </tr>
-
-             {%endwith%}
-           </table>
+    {% with userinfo=payload.user_record.userInfo %}
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <h4 class="btn btn-info">Basic information</h4>
         </div>
-
-        <div class="col-md-4">
-          <img src="{{payload.profilephoto}}" width="100%" height="inherit" alt="picture not found"> </img>
-        </div>
-    </div>
-  {%endif%}
-<hr>
-<!-- Permanent Address -->
-  {% if status == "NO_ERROR" and payload.user_record and payload.user_record.permanentAddress %}
-    <div class="row">
-      <h4>Permanent Address</h4>
-      <br>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-6">
-           <table class="alignleft" >
-             {% with pAddr=payload.user_record.permanentAddress %}
-             <tr >
-               <td> Line 1 : </td>
-                <td> {{pAddr.addrLine1}} </td>
-             </tr>
-             <tr  >
-               <td > Line 2 : </td>
-               <td>{{pAddr.addrLine2}} </td>
-             </tr>
-             <tr >
-               <td > Pincode : </td>
-               <td>{{pAddr.pincode}} </td>
-             </tr>
-             <tr >
-               <td >City : </td>
-               <td>{{pAddr.city}} </td>
-             </tr>
-             <tr >
-               <td >State : </td>
-               <td>{{pAddr.state}} </td>
-             </tr>
-             <tr >
-               <td >Country : </td>
-               <td>{{pAddr.country}} </td>
-             </tr>
-             {%endwith%}
-           </table>
-        </div>
-
-    </div>
-  {%endif%}
-
-  <hr>
-  <!-- Mailing Address -->
-    {% if status == "NO_ERROR" and payload.user_record and payload.user_record.mailingAddress %}
-      <div class="row">
-        <h4>Mailing Address</h4>
-        <br>
+      <h4>Name : {{userinfo.first_name}} {{userinfo.middle_name}} {{userinfo.last_name}}</h4>
       </div>
-      <br>
-      <div class="row">
+      <div class="card-body">
+        <div class="row">
           <div class="col-md-6">
-             <table class="alignleft" >
-               {% with mAddr=payload.user_record.mailingAddress %}
-               <tr >
-                 <td> Line 1 : </td>
-                  <td> {{mAddr.addrLine1}} </td>
-               </tr>
-               <tr  >
-                 <td > Line 2 : </td>
-                 <td>{{mAddr.addrLine2}} </td>
-               </tr>
-               <tr >
-                 <td > Pincode : </td>
-                 <td>{{mAddr.pincode}} </td>
-               </tr>
-               <tr >
-                 <td >City : </td>
-                 <td>{{mAddr.city}} </td>
-               </tr>
-               <tr >
-                 <td >State : </td>
-                 <td>{{mAddr.state}} </td>
-               </tr>
-               <tr >
-                 <td >Country : </td>
-                 <td>{{mAddr.country}} </td>
-               </tr>
-               {%endwith%}
-             </table>
+              <h5>Phone  : {{userinfo.phone}}</h5> <br>
+              <h5>Email  : {{userinfo.email}}</h5> <br>
+              <h5>Gender : {{userinfo.gender}}</h5> <br>
+              <h5>Occupation : {{payload.user_record.occupation}}</h5> <br>
           </div>
-
+          <div class="col-md-3">
+            <img src="{{payload.profilephoto}}" width="80%" height="inherit"  alt="picture not found"></img>
+          </div>
+        </div>
       </div>
-    {%endif%}
-
+    </div>
+    {%endwith%}
+  {%endif%}
 <hr>
+
+<div class="row">
+  <!-- Permanent Address -->
+  <div class="col-md-6">
+    {% if status == "NO_ERROR" and payload.user_record and payload.user_record.permanentAddress %}
+      {% with pAddr=payload.user_record.permanentAddress %}
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <h4 class="btn btn-info">Permanent Address</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <h5>Line 1 : {{pAddr.addrLine1}}</h5>
+              </div>
+              <div class="row">
+                <h5>Line 2: {{pAddr.addrLine2}}</h5>
+              </div>
+              <div class="row">
+                <h5>City : {{pAddr.city}}</h5>
+              </div>
+              <div class="row">
+                <h5>State : {{pAddr.state}}</h5>
+              </div>
+              <div class="row">
+                <h5>Country : {{pAddr.country}}</h5>
+              </div>
+              <div class="row">
+                <h5>PIN : {{pAddr.pincode}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {%endwith%}
+    {%endif%}
+  </div>
+  <div class="col-md-6">
+  <!-- Mailing Address -->
+  {% if status == "NO_ERROR" and payload.user_record and payload.user_record.mailingAddress %}
+    {% with mAddr=payload.user_record.mailingAddress %}
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <h4 class="btn btn-info">Mailing Address</h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <h5>Line 1 : {{mAddr.addrLine1}}</h5>
+            </div>
+            <div class="row">
+              <h5>Line 2: {{mAddr.addrLine2}}</h5>
+            </div>
+            <div class="row">
+              <h5>City : {{mAddr.city}}</h5>
+            </div>
+            <div class="row">
+              <h5>State : {{mAddr.state}}</h5>
+            </div>
+            <div class="row">
+              <h5>Country : {{mAddr.country}}</h5>
+            </div>
+            <div class="row">
+              <h5>PIN : {{mAddr.pincode}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endwith%}
+  {%endif%}
+  </div>
+</div>
+<hr>
+
 <!-- Company Information -->
   {% if status == "NO_ERROR" and payload.user_record and payload.user_record.companyInfo %}
-    <div class="row">
-      <h4>Company Information </h4>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-10">
-           <table class="alignleft" >
-             {% with cInfo=payload.user_record.companyInfo %}
-             <tr >
-               <td> Company Name : </td>
-                <td> {{cInfo.companyName}} </td>
-             </tr>
-             <tr>
-               <td><h4>Address</h4></td>
-               <td></td>
-             </tr>
-
-             <tr >
-               <td> Line 1 : </td>
-                <td> {{cInfo.companyAddress.addrLine1}} </td>
-             </tr>
-             <tr  >
-               <td > Line 2 : </td>
-               <td>{{cInfo.companyAddress.addrLine2}} </td>
-             </tr>
-             <tr >
-               <td > Pincode : </td>
-               <td>{{cInfo.companyAddress.pincode}} </td>
-             </tr>
-             <tr >
-               <td >City : </td>
-               <td>{{cInfo.companyAddress.city}} </td>
-             </tr>
-             <tr >
-               <td >State : </td>
-               <td>{{cInfo.companyAddress.state}} </td>
-             </tr>
-             <tr >
-               <td >Country : </td>
-               <td>{{cInfo.companyAddress.country}} </td>
-             </tr>
-             {%endwith%}
-           </table>
+    {% with cInfo=payload.user_record.companyInfo %}
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <h4 class="btn btn-info">Company Information</h4>
         </div>
-
-    </div>
-  {%endif%}
-
-  <hr>
-  <!-- Emergency Contact Information -->
-    {% if status == "NO_ERROR" and payload.user_record and payload.user_record.emergencyContactInfo %}
-      <div class="row">
-        <h4>Emergency Contact Information </h4>
       </div>
-      <br>
-      <div class="row">
-          <div class="col-md-10">
-             <table class="alignleft" >
-               {% with ecInfo=payload.user_record.emergencyContactInfo %}
-               <tr >
-                 <td> Name : </td>
-                  <td> {{ecInfo.contactInfo1.first_name}} {{ecInfo.contactInfo1.middle_name}} {{ecInfo.contactInfo1.last_name}} </td>
-               </tr>
-               <tr >
-                 <td> Email : </td>
-                 <td> {{ecInfo.contactInfo1.email}} </td>
-               </tr>
-               <tr >
-                 <td> Gender : </td>
-                 <td> {{ecInfo.contactInfo1.gender}} </td>
-               </tr>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <h5>Name : {{cInfo.companyName}}</h5>
+            </div>
+            <hr>
+            <div class="row">
+              <h5>Line 1: {{cInfo.companyAddress.addrLine1}}</h5>
+            </div>
+            <div class="row">
+              <h5>Line 2: {{cInfo.companyAddress.addrLine2}}</h5>
+            </div>
+            <div class="row">
+              <h5>City : {{cInfo.companyAddress.city}}</h5>
+            </div>
+            <div class="row">
+              <h5>State : {{cInfo.companyAddress.state}}</h5>
+            </div>
+            <div class="row">
+              <h5>Country : {{cInfo.companyAddress.country}}</h5>
+            </div>
+            <div class="row">
+              <h5>PIN : {{cInfo.companyAddress.pincode}}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-               <tr >
-                 <td> Phone : </td>
-                 <td> {{ecInfo.contactInfo1.phone}} </td>
-               </tr>
-               <tr >
-                 <td> Relationship : </td>
-                 <td> {{ecInfo.relationship1}} </td>
-               </tr>
+    {%endwith%}
+  {%endif%}
+  <hr>
 
-               <tr>
-                 <td><h4>Address</h4></td>
-                 <td></td>
-               </tr>
-
-               <tr >
-                 <td> Line 1 : </td>
-                  <td> {{ecInfo.contactAddress1.addrLine1}} </td>
-               </tr>
-               <tr  >
-                 <td > Line 2 : </td>
-                 <td>{{ecInfo.contactAddress1.addrLine2}} </td>
-               </tr>
-               <tr >
-                 <td > Pincode : </td>
-                 <td>{{ecInfo.contactAddress1.pincode}} </td>
-               </tr>
-               <tr >
-                 <td >City : </td>
-                 <td>{{ecInfo.contactAddress1.city}} </td>
-               </tr>
-               <tr >
-                 <td >State : </td>
-                 <td>{{ecInfo.contactAddress1.state}} </td>
-               </tr>
-               <tr >
-                 <td >Country : </td>
-                 <td>{{ecInfo.contactAddress1.country}} </td>
-               </tr>
-               {%endwith%}
-             </table>
+  {% if status == "NO_ERROR" and payload.user_record and payload.user_record.emergencyContactInfo %}
+    {% with ecInfo=payload.user_record.emergencyContactInfo %}
+    <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <h4 class="btn btn-info">Emergency Contact Information</h4>
+          </div>
+        </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <h5>Name : {{ecInfo.contactInfo1.first_name}} {{ecInfo.contactInfo1.middle_name}} {{ecInfo.contactInfo1.last_name}} </h5>
+            </div>
+            <div class="row">
+              <h5>Email : {{ecInfo.contactInfo1.email}}</h5>
+            </div>
+            <div class="row">
+              <h5>Phone : {{ecInfo.contactInfo1.phone}}</h5>
+            </div>
+            <div class="row">
+              <h5>Gender : {{ecInfo.contactInfo1.gender}}</h5>
+            </div>
+            <div class="row">
+              <h5>Relationship : {{ecInfo.relationship1}}</h5>
+            </div>
           </div>
 
+          <div class="col-md-6">
+            <div class="row">
+              <h5>Address</h5>
+            </div>
+            <hr>
+
+            <div class="row">
+              <h5>Line 1: {{ecInfo.contactAddress1.addrLine1}}</h5>
+            </div>
+            <div class="row">
+              <h5>Line 2: {{ecInfo.contactAddress1.addrLine2}}</h5>
+            </div>
+            <div class="row">
+              <h5>City : {{ecInfo.contactAddress1.city}}</h5>
+            </div>
+            <div class="row">
+              <h5>State : {{ecInfo.contactAddress1.state}}</h5>
+            </div>
+            <div class="row">
+              <h5>Country : {{ecInfo.contactAddress1.country}}</h5>
+            </div>
+            <div class="row">
+              <h5>PIN : {{ecInfo.contactAddress1.pincode}}</h5>
+            </div>
+          </div>
+        </div> <!-- row end -->
       </div>
-    {%endif%}
+    </div>
+    {%endwith%}
+  {%endif%}
+
+  <br><br>
 
 
 </div>

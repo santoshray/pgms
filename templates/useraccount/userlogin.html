@@ -17,7 +17,9 @@
             </div>
             <div class="col-md-8">
               <form class="form-signin" method="post" action="/useraccount/account/" enctype="multipart/form-data">
-                <input type="text" class="form-control mb-2" placeholder="Email" required autofocus>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="email" required="" placeholder="Email*" data-form-field="Email">
+                </div>
                 <input type="password" class="form-control mb-2" placeholder="Password" required>
                 <button class="btn btn-lg btn-info btn-block mb-1" type="submit">Sign in</button>
                 <label class="checkbox float-left">

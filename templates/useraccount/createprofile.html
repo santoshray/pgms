@@ -1,0 +1,481 @@
+{% extends 'base.html'%}
+
+{%load staticfiles%}
+
+
+
+  {%block body%}
+
+
+<!--
+  <nav id="drawer" class="nav">
+    <ul class="nav__list">
+      <li class="nav__item nav__item__profile">Profile</li>
+      <li class="nav__item nav__item__idVerification">ID Verification</li>
+      <li class="nav__item nav__item__companyInfo">Company Info</li>
+      <li class="nav__item nav__item__emergencyContact">Emergency Contact</li>
+    </ul>
+  </nav>
+-->
+<div class="container">
+<br>
+<div class="row">
+  <<div class="col-md-1">
+  </div>
+  <div class="col-md-8">
+    <ul class="nav">
+      <li class="nav-item nav__item__profile ">
+        <a class="nav-link  btn btn-outline-secondary " href="#">Profile</a>
+      </li>
+      <li> </li>
+      <li class="nav-item nav__item__idVerification">
+        <a class="nav-link btn btn-outline-secondary" href="#">ID Verification</a>
+      </li>
+      <li class="nav-item nav__item__companyInfo">
+        <a class="nav-link btn btn-outline-secondary" href="#">Company Info</a>
+      </li>
+      <li class="nav-item nav__item__emergencyContact">
+        <a class="nav-link btn btn-outline-secondary" href="#">Emergency Contact</a> <!--disabled-->
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+
+    <div class="col-md-8 ">
+
+
+      <!--  pg-management-profile form start -->
+        <div class="pg-management-profile">
+          <h3>Resident Form : Profile Information</h3>
+          <div class="form-content">
+            <form method="post" action="/useraccount/createprofile/" class="form-container" enctype="multipart/form-data">
+              {%csrf_token%}
+              <input type="hidden"  name="infotype" value="profile">
+              <table class="form-table-content">
+                <tr class="row-content">
+                  <td class="column-content column-content-first">First Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="firstName"></label>
+                    <input type="text" name="firstName" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Middle Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="middleName"></label>
+                    <input type="text" name="middleName" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Last Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="lastName"></label>
+                    <input type="text" name="lastName" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Gender</td>
+                  <td class="column-content column-content-second">
+                    <label for="gender"></label>
+                    <input type="radio" name="gender" value="male" class="radio-select" checked> Male<br>
+                    <input type="radio" name="gender" value="female" class="radio-select"> Female<br>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Email</td>
+                  <td class="column-content column-content-second">
+                    <label for="email"></label>
+                    <input type="text" name="email" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Phone</td>
+                  <td class="column-content column-content-second">
+                    <label for="phone"></label>
+                    <input type="number" name="phone" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <tr>
+                    <td class="column-content column-content-first">Permanent Address</td>
+                  </tr>
+                  <td class="column-content column-content-first-nextLine">Line 1</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="permanentAddressLine1"></label>
+                    <input type="text" name="permanentAddressLine1" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Line 2</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="permanentAddressLine2"></label>
+                    <input type="text" name="permanentAddressLine2" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Pincode</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="pincode"></label>
+                    <input type="number" name="permanentAddressPincode" class="input-field" maxlength="10" size="10" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">City</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="city"></label>
+                    <input type="text" name="permanentAddressCity" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">State</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="permanentAddressState" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Country</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="permanentAddressCountry" class="input-field" >
+                  </td>
+                </tr>
+
+                <tr class="row-content">
+                  <tr>
+                    <td class="column-content column-content-first">Mailing Address</td>
+                  </tr>
+                  <td class="column-content column-content-first-nextLine">Line 1</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="mailingAddressLine1"></label>
+                    <input type="text" name="mailingAddressLine1" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Line 2</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="mailingAddressLine2"></label>
+                    <input type="text" name="mailingAddressLine2" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Pincode</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="pincode"></label>
+                    <input type="number" name="mailingAddressPincode" class="input-field" maxlength="10" size="10" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">City</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="city"></label>
+                    <input type="text" name="mailingAddressCity" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">State</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="mailingAddressState" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Country</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="mailingAddressCountry" class="input-field" >
+                  </td>
+                </tr>
+
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Profile Photo</td>
+                  <td class="column-content column-content-second">
+                    <label for="profilePhoto"></label>
+                    <input type="file" name="picture" class="input-field input-field-photo"
+                    accept="image/gif, image/jpeg" >
+                  </td>
+                </tr>
+              </table>
+              <div class="btn-submit-container">
+                <button type="submit" class="btn-submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div> <!-- End of class pg-management-profile -->
+
+       <!--ID  Verification Form Start-->
+        <div class="pg-management-idVerification">
+          <h3>Resident Form : Identity Verification</h3>
+          <div class="form-content">
+            <form method="post" action="/useraccount/createprofile/" class="form-container" enctype="multipart/form-data">
+              {%csrf_token%}
+              <input type="hidden"  name="infotype" value="idverification">
+              {%if payload%}
+                <input type="hidden"  name="email" value={{payload.email}}>
+                <input type="hidden"  name="id" value={{payload.id}}>
+              {%endif%}
+              <table class="form-table-content">
+                <tr class="row-content">
+                  <td class="column-content column-content-first">ID Type</td>
+                  <td class="column-content column-content-second">
+                    <label for="idType"></label>
+                    <input type="text" name="idType" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">ID unique Number</td>
+                  <td class="column-content column-content-second">
+                    <label for="idDoc"></label>
+                    <input type="text" name="idDoc" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">ID picture <br> (JPG, PNG, GIF, PDF, and EPS)</td>
+                  <td class="column-content column-content-second">
+                    <label for="idPicture"></label>
+                    <input type="file" name="idPicture" class="input-field input-field-photo"
+                    accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" >
+                  </td>
+                </tr>
+
+              </table>
+              <div class="btn-submit-container">
+                <button type="submit" class="btn-submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!--ID  Verification Form End-->
+
+      <!-- Company Info form  start-->
+        <div class="pg-management-companyInfo">
+          <h3>Resident Form : Company Information</h3>
+          <div class="form-content">
+            <form method="post" action="/useraccount/createprofile/" class="form-container" enctype="multipart/form-data">
+              {%csrf_token%}
+              <input type="hidden"  name="infotype" value="company">
+              {%if payload%}
+                <h4>{{payload.email}}</h4>
+                <h4>{{payload.id}}</h4>
+                <input type="hidden"  name="email" value={{payload.email}}>
+                <input type="hidden"  name="id" value={{payload.id}}>
+              {%endif%}
+              <table class="form-table-content">
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Company Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="companyName"></label>
+                    <input type="text" name="companyName" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <tr>
+                    <td class="column-content column-content-first">Company Address</td>
+                  </tr>
+                  <td class="column-content column-content-first-nextLine">Line 1</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="companyAddressLine1"></label>
+                    <input type="text" name="companyAddressLine1" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Line 2</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="mailingAddressLine2"></label>
+                    <input type="text" name="companyAddressLine2" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Pincode</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="pincode"></label>
+                    <input type="number" name="companyPincode" class="input-field" maxlength="10" size="10" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">City</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="city"></label>
+                    <input type="text" name="companyCity" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">State</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="companyState" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Country</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="companyCountry" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Occupation</td>
+                  <td class="column-content column-content-second">
+                    <label for="occupation"></label>
+                    <input type="text" name="occupation" class="input-field" required>
+                  </td>
+                </tr>
+              </table>
+              <div class="btn-submit-container">
+                <button type="submit" class="btn-submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      <!-- Company Info form  End-->
+
+      <!-- Emergency Contact Info form  start-->
+        <div class="pg-management-emergencyContact">
+          <h3>Resident Form : Emergency Contact Information</h3>
+          <div class="form-content">
+            <form method="post" action="/useraccount/createprofile/" class="form-container" enctype="multipart/form-data">
+              {%csrf_token%}
+              <input type="hidden"  name="infotype" value="emergency_contact">
+              {%if payload%}
+                <h4>{{payload.email}}</h4>
+                <h4>{{payload.id}}</h4>
+                <input type="hidden"  name="email" value={{payload.email}}>
+                <input type="hidden"  name="id" value={{payload.id}}>
+              {%endif%}
+              <table class="form-table-content">
+                <tr class="row-content">
+                  <td class="column-content column-content-first">First Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="firstName"></label>
+                    <input type="text" name="ec1firstName" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Middle Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="middleName"></label>
+                    <input type="text" name="ec1middleName" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Last Name</td>
+                  <td class="column-content column-content-second">
+                    <label for="lastName"></label>
+                    <input type="text" name="ec1lastName" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Gender</td>
+                  <td class="column-content column-content-second">
+                    <label for="gender"></label>
+                    <input type="radio" name="ec1gender" value="male" class="radio-select" checked> Male<br>
+                    <input type="radio" name="ec1gender" value="female" class=" radio-select"> Female<br>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Email</td>
+                  <td class="column-content column-content-second">
+                    <label for="email"></label>
+                    <input type="text" name="ec1email" class="input-field" >
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first">Phone</td>
+                  <td class="column-content column-content-second">
+                    <label for="phone"></label>
+                    <input type="number" name="ec1phone" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <tr>
+                    <td class="column-content column-content-first">Communication Address</td>
+                  </tr>
+                  <td class="column-content column-content-first-nextLine">Line 1</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="ec1Line1"></label>
+                    <input type="text" name="ec1Line1" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Line 2</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="ec1Line2"></label>
+                    <input type="text" name="ec1Line2" class="input-field">
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Pincode</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="pincode"></label>
+                    <input type="number" name="ec1Pincode" class="input-field" maxlength="10" size="10" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">City</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="city"></label>
+                    <input type="text" name="ec1City" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">State</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="ec1State" class="input-field" required>
+                  </td>
+                </tr>
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Country</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="state"></label>
+                    <input type="text" name="ec1Country" class="input-field" required>
+                  </td>
+                </tr>
+
+                <tr class="row-content">
+                  <td class="column-content column-content-first-nextLine">Relationship</td>
+                  <td class="column-content column-content-second column-content-second-nextLine">
+                    <label for="relationship"></label>
+                    <input type="text" name="ec1Relationship" class="input-field" required>
+                  </td>
+                </tr>
+              </table>
+              <div class="btn-submit-container">
+                <button type="submit" class="btn-submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      <!-- Emergency Contact Info form  End-->
+
+        <script type="text/javascript" src="{%static "js/resident-form.js"%}"></script>
+        <script type="text/javascript">
+        {% if payload.infotype %}
+          show('{{payload.infotype}}');
+        {% endif %}
+        </script>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+  {%endblock%}
+<!--
+  <header class="header">
+    <div class="header__inner">
+      <img class="header__logo" src="{%static "img/PG-icon.svg"%}" alt="icon of PG">
+      <h1 class="header__title">
+        Easy PG Solution
+      </h1>
+    </div>
+  </header>
+-->

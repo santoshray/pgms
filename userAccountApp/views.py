@@ -22,7 +22,34 @@ def index(request):
     res_dict["payload"] = {}
     res_dict["payload"]["infotype"] = "profile"
 
-    return render(request,'useraccount/index.html',context=res_dict)
+    return render(request,'useraccount/userlogin.html',context=res_dict)
+
+def createprofile(request):
+    res_dict = {}
+
+    if request.method == "GET":
+        res_dict["status"] = "NO_ERROR"
+        res_dict["payload"] = {}
+        res_dict["payload"]["infotype"] = "profile"
+        return render(request,'useraccount/createprofile.html',context=res_dict)
+
+    if request.method == "POST":
+        post_content = request.POST
+        if post_content['infotype'] == 'profile':
+            res_dict = pgms_add_profile_info(request)
+
+        if(post_content['infotype'] == 'idverification'):
+            res_dict = pgms_add_idverification_info(request)
+
+        if(post_content['infotype'] == 'company'):
+            res_dict = pgms_add_company_info(request)
+
+        if(post_content['infotype'] == 'emergency_contact'):
+            res_dict = pgms_add_emergency_contact_info(request)
+
+        return render(request,'useraccount/createprofile.html',context=res_dict)
+
+
 
 def register(request):
     res_dict = {}
@@ -67,6 +94,7 @@ def upload(request):
 
     return render(request,'useraccount/fileUpload.html',context=res_dict)
 
+
 def viewprofile(request,profile_id):
     res_dict={}
 
@@ -81,22 +109,31 @@ def viewprofile(request,profile_id):
             res_dict["payload"]["profilephoto"] = profilePhotolist[0]
 
 
-    return render(request,'useraccount/residentlist.html',context=res_dict)
+    return render(request,'useraccount/viewprofile.html',context=res_dict)
 
 
 def residentlist(request):
     res_dict={}
-
-    user_record  =  UserAccountRecord.objects.get(pk=22)
-    print(user_record)
-    if user_record:
-        res_dict["status"] = "NO_ERROR"
-        res_dict["payload"] = {}
-        res_dict["payload"]["user_record"] = user_record
-        profilePhotolist = eval(user_record.profilePhotolist)
+    user_info_list  = []
+    user_record_list  =  UserAccountRecord.objects.all()
+    print (user_record_list)
+    for u in user_record_list :
+        user_info_obj = {}
+        user_info_obj["name"] = u.userInfo.first_name + " "+ u.userInfo.middle_name+" "+u.userInfo.last_name
+        user_info_obj["email"] = u.userInfo.email
+        user_info_obj["phone"] = u.userInfo.phone
+        user_info_obj["id"] = u.id
+        profilePhotolist = eval(u.profilePhotolist)
         if len(profilePhotolist) > 0 :
-            res_dict["payload"]["profilephoto"] = profilePhotolist[0]
+            user_info_obj["profilephoto"] = profilePhotolist[0]
+        else:
+            user_info_obj["profilephoto"] = ""
 
+        user_info_list.append(user_info_obj)
+
+    res_dict["status"] = "NO_ERROR"
+    res_dict["payload"] = {}
+    res_dict["payload"]["user_info_list"] = user_info_list
     return render(request,'useraccount/residentlist.html',context=res_dict)
 
 

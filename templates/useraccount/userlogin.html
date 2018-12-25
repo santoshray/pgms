@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+{% block body %}
+<br><br><br>
+
+
+<div class="container pt-3">
+  <div class="row justify-content-sm-center">
+    <div class="col-md-9">
+      <div class="card border-info">
+        <div class="card-header">Log in</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img src='{%static "img/PG-icon.svg"%}' width="100px" height="100px"></img>
+              <h4 class="text-center">PGMS</h4>
+            </div>
+            <div class="col-md-8">
+              <form class="form-signin" method="post" action="/useraccount/account/" enctype="multipart/form-data">
+                <input type="text" class="form-control mb-2" placeholder="Email" required autofocus>
+                <input type="password" class="form-control mb-2" placeholder="Password" required>
+                <button class="btn btn-lg btn-info btn-block mb-1" type="submit">Sign in</button>
+                <label class="checkbox float-left">
+              <input type="checkbox" value="remember-me">
+              Remember me
+            </label>
+                <a href="/useraccount/forgotpassword" class="float-right">Forgot password?</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/useraccount/createprofile/" class="float-right">Register </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

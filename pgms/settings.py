@@ -26,7 +26,7 @@ SECRET_KEY = 'm3%$ebajxoj38)-2yst_vxcf55=c!d0n#75_7j@3$z^g9^yzcp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.110.25.11','127.0.0.1']
+ALLOWED_HOSTS = ['10.110.25.11','127.0.0.1','comfortabode.azurewebsites.net']
 
 
 # Application definition
@@ -129,3 +129,19 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 MEDIA_URL = '/media/'
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 15000000
+
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+
+#EMAIL_HOST_USER = 'santosh.ray81@gmail.com'
+#EMAIL_HOST_PASSWORD = 'Cuttack1234%'
+#DEFAULT_FROM_EMAIL = 'noreply@sla.com'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'comfortabode'
+EMAIL_HOST_PASSWORD = 'abode1234%'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

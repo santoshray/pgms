@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -122,9 +123,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
@@ -136,12 +141,12 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 15000000
 #EMAIL_PORT = 587
 #EMAIL_USE_TLS = True
 
-#EMAIL_HOST_USER = 'santosh.ray81@gmail.com'
-#EMAIL_HOST_PASSWORD = 'Cuttack1234%'
-#DEFAULT_FROM_EMAIL = 'noreply@sla.com'
+#EMAIL_HOST_USER =
+#EMAIL_HOST_PASSWORD =
+#DEFAULT_FROM_EMAIL =
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'comfortabode'
-EMAIL_HOST_PASSWORD = 'abode1234%'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_HOST_USER =
+#EMAIL_HOST_PASSWORD =
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True

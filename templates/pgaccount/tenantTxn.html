@@ -1,0 +1,162 @@
+{%extends 'base.html'%}
+
+{% block body %}
+
+
+<div class="container">
+
+  <br><br>
+  <div class="row">
+    <div class="col-md-6">
+      {% if payload.reason %}
+      {% for l in payload.reason %}
+      <h5>{{l}}</h5>
+      <br>
+      {%endfor%}
+      {%if status == "NO_ERROR"%}
+      <a href="/pgaccount/tenantTxn/" class="btn btn-outline-dark">Add New Tenant Transaction</a>
+      {%endif%}
+      {%if status == "ERROR"%}
+      <a href="/pgaccount/tenantTxn/" class="btn btn-outline-dark">Try Again</a>
+      {%endif%}
+
+      {%endif%}
+    </div>
+
+  </div>
+
+  {%if status == "NO_ERROR" and payload.display == "tenant_query" %}
+    <form method="post" action="/pgaccount/tenantTxn/" class="form-container" enctype="multipart/form-data">
+      {%csrf_token%}
+      <input type="hidden" name="infotype" value="tenant_info">
+      <div class="row">
+        <h5> Email</h5>
+        <div class="col-md-6">
+          <input type="text" name="email" class="form-control" value="" >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <h5>OR</h5>
+      </div>
+      <div class="row">
+        <h5> Phone</h5>
+        <div class="col-md-6">
+          <input type="text" name="phone" class="form-control" value="" >
+        </div>
+      </div>
+      <br><br>
+    <div class="row">
+      <div class="col-md-2"> </div>
+        <div class="btn btn-outline-dark">
+          <button type="submit" class="btn-submit">Get Tenant</button>
+        </div>
+    </div>
+    <hr>
+    </form>
+  {%endif%}
+
+{% if status == "NO_ERROR"  and payload.user_info %}
+  <!-- Show the user profile  -->
+
+    {% with userinfo=payload.user_info %}
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <h4 class="btn btn-info">Basic information</h4>
+        </div>
+      <h4>Name : {{userinfo.name}}</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+              <h5>Phone  : {{userinfo.phone}}</h5> <br>
+              <h5>Email  : {{userinfo.email}}</h5> <br>
+          </div>
+          <div class="col-md-3">
+            <img src="{{userinfo.profilephoto}}" width="80%" height="inherit"  alt="picture not found"></img>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%endwith%}
+  <!-- End of user profile  -->
+<form method="post" action="/pgaccount/tenantTxn/" class="form-container" enctype="multipart/form-data">
+  {%csrf_token%}
+  <input type="hidden" name="infotype" value="tenantTxn">
+
+  {% if status == "NO_ERROR"  and payload.user_info %}
+  {% with userinfo=payload.user_info %}
+    <input type="hidden" name="tenant_id" value={{userinfo.id}}>
+  {%endwith%}
+  {% endif %}
+
+  <h5>Transaction Type</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <select class="form-control font-1em" name ='expense_type'>
+          <option value="monthly_rent">Monthly Rent</option>
+          <option value="deposit">Fixed Deposit</option>
+          <option value="refund_deposit">Refund Deposit</option>
+        </select>
+      </div>
+  </div>
+  <h5>Transaction Mode</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <select class="form-control font-1em" name ='txn_mode'>
+          <option value="cash">Cash</option>
+          <option value="cheque">Cheque</option>
+          <option value="online">Online</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+  </div>
+  <h5>Amount</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <input type="number" class="form-control font-1em" step="0.25" name="amount" value="0.0">
+      </div>
+  </div>
+  <h5>start date</h5>
+  <div class="row">
+      <div class="col-sm-6">
+        <input type="date" class="btn btn-outline-dark font-1em" name="startDate">
+      </div>
+  </div>
+  <h5>end date</h5>
+  <div class="row">
+      <div class="col-sm-6">
+        <input type="date" class="btn btn-outline-dark font-1em" name="endDate">
+      </div>
+  </div>
+  <h5>Transaction details if Any</h5>
+  <div class="row">
+      <div class="col-md-8">
+         <textarea class="form-control font-1em" rows="4" cols="100%" width="100%" placeholder=" Enter the Description" name="description"></textarea>
+      </div>
+  </div>
+
+  <h5> Receipts Upload (if Any)</h5>
+  <div class="row">
+    <div class="custom-file col-md-4">
+      <input type="file" class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="row">
+    <div class="col-md-5"> </div>
+      <div class="btn btn-outline-dark">
+        <button type="submit" class="btn-submit">Add Transaction</button>
+      </div>
+  </div>
+</form>
+
+{%endif%}
+
+
+
+</div> <!-- Container End -->
+{%endblock%}

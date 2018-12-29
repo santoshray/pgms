@@ -1,0 +1,90 @@
+{%extends 'base.html'%}
+
+{% block body %}
+
+<script type="text/javascript">
+  $(function () {
+  $('#datetimepicker1').datetimepicker();
+});
+</script>
+
+
+<div class="container">
+
+  <br><br>
+
+<form method="post" action="/pgaccount/managementTxn/" class="form-container" enctype="multipart/form-data">
+  {%csrf_token%}
+
+
+  <h5>Transaction Type</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <select class="form-control font-1em" name ='expense_type'>
+          <option value="deposit">Deposit</option>
+          <option value="withdrawl">Withdrawl</option>
+        </select>
+      </div>
+  </div>
+
+  <h5>Transaction Mode</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <select class="form-control font-1em" name ='txn_mode'>
+          <option value="cash">Cash</option>
+          <option value="cheque">Cheque</option>
+          <option value="online">Online</option>
+          <option value="others">Others</option>
+        </select>
+      </div>
+  </div>
+
+  <h5>Amount</h5>
+  <div class="row">
+      <div class="col-md-6">
+        <input type="number" class="form-control font-1em" step="0.25" name="amount" value="0.0">
+      </div>
+  </div>
+
+
+  <h5>start date</h5>
+  <div class="row">
+      <div class="col-sm-6">
+        <input type="date" class="btn btn-outline-dark font-1em" name="startDate">
+      </div>
+  </div>
+  <h5>end date</h5>
+  <div class="row">
+      <div class="col-sm-6">
+        <input type="date" class="btn btn-outline-dark font-1em" name="endDate">
+      </div>
+  </div>
+  <h5>Transaction details if Any</h5>
+  <div class="row">
+      <div class="col-md-8">
+         <textarea class="form-control font-1em" rows="4" cols="100%" width="100%" placeholder=" Enter the Description" name="description"></textarea>
+      </div>
+  </div>
+
+  <h5> Receipts Upload (if Any)</h5>
+  <div class="row">
+    <div class="custom-file col-md-4">
+      <input type="file" class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+  </div>
+
+  <br><br>
+  <div class="row">
+    <div class="col-md-5"> </div>
+      <div class="btn btn-outline-dark">
+        <button type="submit" class="btn-submit">Add Transaction</button>
+      </div>
+  </div>
+
+</div>
+
+</div> <!-- Container End -->
+
+
+{%endblock%}

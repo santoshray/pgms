@@ -1,2 +1,26 @@
 <!DOCTYPE html>
 {%extends 'base.html'%}
+
+{%block body%}
+
+<body>
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/pgaccount/expense/" class="btn btn-outline-dark">Add PG expense </a>
+        <br> <br>
+        <a href="/pgaccount/tenantTxn/" class="btn btn-outline-dark">Add Tenant Transaction</a>
+        <br> <br>
+        <a href="/pgaccount/managementTxn/" class="btn btn-outline-dark">Add Management Transaction</a>
+        <br> <br>
+        <a href="/useraccount/residentlist/" class="btn btn-outline-dark">Resident list</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+
+
+{%endblock%}

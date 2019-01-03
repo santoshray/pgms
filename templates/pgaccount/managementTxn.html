@@ -10,12 +10,29 @@
 
 
 <div class="container">
-
   <br><br>
+  <div class="row">
+    <div class="col-md-6">
+      {% if payload.reason %}
+        {% for l in payload.reason %}
+        <h5>{{l}}</h5>
+        <br>
+        {%endfor%}
+        {%if status == "NO_ERROR"%}
+          <a href="/pgaccount/managementTxn/" class="btn btn-outline-dark">Add New Management Transaction</a>
+        {%endif%}
+        {%if status == "ERROR"%}
+          <a href="/pgaccount/managementTxn/" class="btn btn-outline-dark">Try Again</a>
+        {%endif%}
+
+        {%endif%}
+    </div>
+  </div>
+
+{%if status == "NO_ERROR" and payload.display == "expense_form" %}
 
 <form method="post" action="/pgaccount/managementTxn/" class="form-container" enctype="multipart/form-data">
   {%csrf_token%}
-
 
   <h5>Transaction Type</h5>
   <div class="row">
@@ -83,6 +100,8 @@
   </div>
 
 </div>
+{%endif%}
+
 
 </div> <!-- Container End -->
 

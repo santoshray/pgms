@@ -1,0 +1,123 @@
+{%extends 'base.html'%}
+
+{%block body%}
+<br><br>
+<div class="container">
+  <form method="post" action="/pgaccount/financeSummary/" class="form-container" enctype="multipart/form-data">
+    {%csrf_token%}
+    <div class="row">
+      <div class="col-md-5">
+        <h5>start date :</h5>
+        <input type="date" class="btn btn-outline-dark font-1em" name="startDate">
+      </div>
+      <div class="col-md-5">
+        <h5>end date :</h5>
+        <input type="date" class="btn btn-outline-dark font-1em" name="endDate">
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-2"> </div>
+      <div class="col-xs-3"></div>
+        <div class="btn btn-outline-dark">
+          <button type="submit" class="btn-submit">Query Transaction</button>
+        </div>
+    </div>
+
+  <br><br>
+
+
+  {%if status == "NO_ERROR" and payload.pg_expense_list %}
+
+    <div class="row">
+      <h5> PG expenses from {{payload.startDate}} to {{payload.endDate}}</h5>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead class="table-dark">
+          <td>Expense Type</td>
+          <td>Mode</td>
+          <td>Transaction Date</td>
+          <td>Amount</td>
+        </thead>
+        {%for l in payload.pg_expense_list%}
+        <tr>
+          <td>{{l.expense_type}}</td>
+          <td>{{l.txn_info.mode}}</td>
+          <td>{{l.txn_info.endDate}}</td>
+          <td>{{l.txn_info.amount}}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+          <td><b>TOTAL :</b></td>
+          <td></td><td></td>
+          <td>{{payload.pg_expense_total}}</td>
+        </tr>
+      </table>
+    </div>
+  {%endif%}
+
+  {%if status == "NO_ERROR" and payload.mgmt_txn_list %}
+
+    <div class="row">
+      <h5> Management Deposit/Withdrawl from {{payload.startDate}} to {{payload.endDate}}</h5>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead class="table-dark">
+          <td>Expense Type</td>
+          <td>Mode</td>
+          <td>Transaction Date</td>
+          <td>Amount</td>
+        </thead>
+        {%for l in payload.mgmt_txn_list%}
+        <tr>
+          <td>{{l.type}}</td>
+          <td>{{l.txn_info.mode}}</td>
+          <td>{{l.txn_info.endDate}}</td>
+          <td>{{l.txn_info.amount}}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+          <td><b>TOTAL :</b></td>
+          <td></td><td></td>
+          <td>{{payload.mgmt_txn_sum}}</td>
+        </tr>
+      </table>
+    </div>
+  {%endif%}
+
+  {%if status == "NO_ERROR" and payload.tenant_txn_list %}
+
+    <div class="row">
+      <h5> Tenants Transaction Monthly Rent , deposit , Refund from {{payload.startDate}} to {{payload.endDate}}</h5>
+    </div>
+    <div class="row">
+      <table class="table">
+        <thead class="table-dark">
+          <td>Expense Type</td>
+          <td>Mode</td>
+          <td>Transaction Date</td>
+          <td>Amount</td>
+        </thead>
+        {%for l in payload.tenant_txn_list%}
+        <tr>
+          <td>{{l.txn_type}}</td>
+          <td>{{l.txn_info.mode}}</td>
+          <td>{{l.txn_info.endDate}}</td>
+          <td>{{l.txn_info.amount}}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+          <td><b>TOTAL :</b></td>
+          <td></td><td></td>
+          <td>{{payload.tenant_txn_sum}}</td>
+        </tr>
+      </table>
+    </div>
+  {%endif%}
+
+
+</div>
+
+{%endblock%}

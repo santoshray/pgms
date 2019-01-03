@@ -25,6 +25,7 @@ SECRET_KEY = 'm3%$ebajxoj38)-2yst_vxcf55=c!d0n#75_7j@3$z^g9^yzcp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+USE_X_FORWARDED_PORT =True
 
 ALLOWED_HOSTS = ['10.110.25.11','127.0.0.1',os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net'] if 'WEBSITE_SITE_NAME' in os.environ else []
 

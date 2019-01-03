@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^expense/$',views.expense,name="expense"),
     url(r'^managementTxn/$',views.managementTransaction,name="managementTransaction"),
     url(r'^tenantTxn/$',views.tenantTransaction,name="tenantTransaction"),
+    url(r'^financeSummary/$',views.financeSummary,name="financeSummary"),
+
 ]
